@@ -2,6 +2,10 @@
   "name": "atlas77",
   "displayName": "atlas",
   "description": "Syntax Highlighting support for the Atlas77 language",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/atlas77-lang/atlas77-vscode-plugin"
+  },
   "icon": "images/atlas77_file_logo.png",
   "version": "0.0.1",
   "publisher": "Gipson62",
