@@ -28,6 +28,7 @@
         "extensions": [
           ".atlas"
         ],
+        
         "icon": {
           "light": "images/atlas77_file_logo.png",
           "dark": "images/atlas77_file_logo.png"

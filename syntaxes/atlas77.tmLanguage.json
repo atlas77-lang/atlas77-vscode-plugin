@@ -66,7 +66,7 @@
       "patterns": [
         {
           "name": "storage.type.atlas77",
-          "match": "\\b(i64|i32|i16|i8|bool|f64|f32|u64|u32|u16|u8|str|unit|char)\\b"
+          "match": "\\b(int64|int32|int16|int8|bool|float64|float32|uint64|uint32|uint16|uint8|str|unit|char)\\b"
         }
       ]
     },
