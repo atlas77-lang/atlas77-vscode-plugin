@@ -46,19 +46,15 @@
       "patterns": [
         {
           "name": "keyword.control.atlas77",
-          "match": "\\b(import|trait|class|struct|enum|while|if|else|match|union|func|return|let|const|new)\\b"
-        },
-        {
-          "name": "keyword.operator.atlas77",
-          "match": "(::|->|:)\\b"
+          "match": "\\b(import|package|concept|class|operator|struct|enum|while|if|else|where|as|match|extern|union|func|return|new|delete|break|continue)\\b"
         },
         {
           "name": "keyword.modifier.atlas77",
-          "match": "\\b(public|private)\\b"
+          "match": "\\b(public|private|const|let)\\b"
         },
         {
           "name": "keyword.storage.atlas77",
-          "match": "\\b(self)\\b"
+          "match": "\\b(self|null)\\b"
         }
       ]
     },
@@ -74,7 +70,7 @@
       "patterns": [
         {
           "name": "entity.name.class.declaration.atlas77",
-          "match": "\\b(class|public\\s+class)\\s+([A-Z][a-zA-Z0-9_]*)",
+          "match": "\\b(class|public\\s+class|private\\s+class)\\s+([A-Z][a-zA-Z0-9_]*)",
           "captures": {
             "2": {
               "name": "entity.name.class.atlas77"
@@ -121,7 +117,7 @@
       "patterns": [
         {
           "name": "entity.name.function.declaration.atlas77",
-          "match": "\\bfunc\\s+([a-zA-Z_][a-zA-Z0-9_]*)\\s*\\(([^)]*)\\)\\b"
+          "match": "\\bfunc\\s+([a-zA-Z_][a-zA-Z0-9_]*)\\s*(<\\s*[A-Z][a-zA-Z0-9_]*\\s*>)?\\s*\\(([^)]*)\\)\\b"
         },
         {
           "name": "entity.name.function.call.atlas77",
