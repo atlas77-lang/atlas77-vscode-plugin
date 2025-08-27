@@ -7,7 +7,7 @@
     "url": "https://github.com/atlas77-lang/atlas77-vscode-plugin"
   },
   "icon": "images/atlas77_file_logo.png",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "publisher": "Gipson62",
   "author": "Gipson62",
   "engines": {
