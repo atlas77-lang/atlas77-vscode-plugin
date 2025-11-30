@@ -1,0 +1,40 @@
+{
+  "name": "Atlas77 Theme",
+  "type": "dark",
+  "colors": {},
+  "tokenColors": [
+    {
+      "scope": "storage.type.atlas77",
+      "settings": { "foreground": "#FF8C00" }
+    },
+    {
+      "scope": "storage.type.nullable.atlas77",
+      "settings": { "foreground": "#FF8C00" }
+    },
+    {
+      "scope": "support.class.atlas77",
+      "settings": { "foreground": "#8AB4F8" }
+    },
+    {
+      "scope": "support.type.generic.nullable.atlas77",
+      "settings": { "foreground": "#8AB4F8" }
+    }
+    ,
+    {
+      "scope": "keyword.control.import.atlas77",
+      "settings": { "foreground": "#D7BA7D" }
+    },
+    {
+      "scope": "keyword.control.package.atlas77",
+      "settings": { "foreground": "#C586C0" }
+    },
+    {
+      "scope": "string.quoted.import.atlas77",
+      "settings": { "foreground": "#9CDCFE" }
+    },
+    {
+      "scope": "punctuation.separator.namespace.atlas77",
+      "settings": { "foreground": "#FFFFFF" }
+    }
+  ]
+}
