@@ -13,7 +13,7 @@
     { "include": "#arrays" },
     { "include": "#functions" },
     { "include": "#destructors" },
-    { "include": "#classes" },
+    { "include": "#structs" },
     { "include": "#fields" },
     { "include": "#literals" },
     { "include": "#annotations" },
@@ -50,17 +50,39 @@
     },
     "imports": {
       "patterns": [
-        { "name": "meta.import.atlas77", "match": "\\b(import)\\s+\"([^\"]*)\"", "captures": { "1": { "name": "keyword.control.import.atlas77" }, "2": { "name": "string.quoted.import.atlas77" } } }
+        {
+          "name": "meta.import.atlas77",
+          "begin": "\\b(import)\\s+",
+          "beginCaptures": { "1": { "name": "keyword.control.import.atlas77" } },
+          "end": ";",
+          "patterns": [
+            { "name": "entity.name.namespace.atlas77", "match": "[a-zA-Z_][A-Za-z0-9_]*" },
+            { "name": "punctuation.separator.namespace.atlas77", "match": "::" },
+            { "name": "string.quoted.import.atlas77", "match": "\\b[a-zA-Z_][A-Za-z0-9_]*\\b" }
+          ]
+        }
       ]
     },
-    "keywords": {
-      "patterns": [
-        { "name": "keyword.control.atlas77", "match": "\\b(import|package|concept|operator|struct|enum|while|if|else|where|as|match|extern|union|fun|return|new|delete|break|continue|let|const|public|private)\\b" },
-        { "name": "keyword.storage.atlas77", "match": "\\b(this|null)\\b" }
-      ]
-    },
+        "keywords": {
+          "patterns": [
+            { "name": "keyword.control.atlas77", "match": "\\b(import|package|concept|operator|struct|enum|while|if|else|where|as|match|extern|union|fun|return|new|delete|break|continue)\\b" },
+            { "name": "keyword.modifier.atlas77", "match": "\\b(public|private|let|const)\\b" },
+            { "name": "keyword.storage.atlas77", "match": "\\b(this|null)\\b" }
+          ]
+        },
+    
     "types": {
       "patterns": [
+        {
+          "name": "storage.type.reference.nullable.atlas77",
+          "match": "\\&\\s*(?:const\\s+)?([A-Z][A-Za-z0-9_]*(?:::[A-Z][A-Za-z0-9_]*)*)\\?",
+          "captures": { "1": { "name": "support.class.atlas77" } }
+        },
+        {
+          "name": "storage.type.reference.atlas77",
+          "match": "\\&\\s*(?:const\\s+)?([A-Z][A-Za-z0-9_]*(?:::[A-Z][A-Za-z0-9_]*)*)\\b",
+          "captures": { "1": { "name": "support.class.atlas77" } }
+        },
         { "name": "storage.type.atlas77", "match": "\\b(int64|int32|int16|int8|bool|float64|float32|uint64|uint32|uint16|uint8|string|unit|char|extern_ptr)\\b" },
         { "name": "storage.type.nullable.atlas77", "match": "\\b(int64|int32|int16|int8|bool|float64|float32|uint64|uint32|uint16|uint8|string|unit|char|extern_ptr)\\?" },
         { "name": "support.type.builtin.atlas77", "match": "\\b(usize|isize)\\b" },
@@ -69,13 +91,48 @@
     },
     "generics": {
       "patterns": [
-        { "name": "meta.generics.atlas77", "match": "<\\s*([A-Za-z0-9_,\\s]+)\\s*>", "captures": { "1": { "name": "meta.type.parameters.atlas77" } } },
-        { "name": "meta.generic.instantiation.atlas77", "match": "\\b([A-Z][A-Za-z0-9_]*)\\s*<", "captures": { "1": { "name": "support.class.atlas77" } } }
+        {
+          "name": "meta.generic.instantiation.atlas77",
+          "begin": "\\b([A-Z][A-Za-z0-9_]*)\\s*(<)",
+          "beginCaptures": {
+            "1": { "name": "support.class.atlas77" },
+            "2": { "name": "punctuation.definition.generic.atlas77" }
+          },
+          "end": "(>)",
+          "endCaptures": { "1": { "name": "punctuation.definition.generic.atlas77" } },
+          "patterns": [
+            { "name": "support.class.atlas77", "match": "\\b(?:[A-Z][A-Za-z0-9_]*)(?:::[A-Z][A-Za-z0-9_]*)*\\b" },
+            { "name": "storage.type.reference.atlas77", "match": "\\&\\s*(?:const\\s+)?(?:[A-Z][A-Za-z0-9_]*(?:::[A-Z][A-Za-z0-9_]*)*)\\b" },
+            { "name": "storage.type.atlas77", "match": "\\b(?:int64|int32|int16|int8|bool|float64|float32|uint64|uint32|uint16|uint8|string|unit|char|extern_ptr)\\b" },
+            { "name": "support.type.generic.param.atlas77", "match": "\\b[A-Z]\\b" },
+            { "name": "punctuation.separator.comma.atlas77", "match": "," },
+            { "include": "#generics" }
+          ]
+        }
       ]
     },
     "arrays": {
       "patterns": [
-        { "name": "storage.type.array.atlas77", "match": "\\[[^\\]]+\\]" }
+        { "name": "storage.type.array.atlas77", "match": "\\[[^\\]]+\\]" },
+        {
+          "name": "meta.array.literal.atlas77",
+          "begin": "\\bnew\\s*\\[",
+          "beginCaptures": { "0": { "name": "keyword.operator.new.atlas77" } },
+          "end": "\\]",
+          "patterns": [
+            { "name": "constant.numeric.atlas77", "match": "\\b[0-9]+\\b" },
+            { "name": "punctuation.separator.array.atlas77", "match": ";|," }
+          ]
+        },
+        {
+          "name": "meta.array.literal.short.atlas77",
+          "begin": "(?<!new)\\[",
+          "end": "\\]",
+          "patterns": [
+            { "name": "constant.numeric.atlas77", "match": "\\b[0-9]+\\b" },
+            { "name": "punctuation.separator.array.atlas77", "match": "," }
+          ]
+        }
       ]
     },
     "destructors": {
@@ -118,6 +175,43 @@
     },
     "functions": {
       "patterns": [
+        {
+          "name": "meta.function.declaration.atlas77",
+          "begin": "\\b(?:(public|private)\\s+)?(fun)\\s+([A-Za-z_][A-Za-z0-9_]*)\\s*(?=(<|\\())",
+          "beginCaptures": {
+            "1": { "name": "keyword.modifier.atlas77" },
+            "2": { "name": "keyword.control.atlas77" },
+            "3": { "name": "entity.name.function.atlas77" }
+          },
+          "end": "\\)\\s*(->\\s*([A-Za-z0-9_<>,\\[\\]&\\s:;]+))?\\s*\\{",
+          "endCaptures": {
+            "2": { "name": "storage.type.atlas77" }
+          },
+          "patterns": [
+            { "include": "#types" },
+            { "include": "#generics" },
+            { "include": "#arrays" },
+            { "include": "#annotations" }
+          ]
+        },
+        {
+          "name": "meta.extern.declaration.atlas77",
+          "begin": "\\b(?:(public|private)\\s+)?extern\\s+([A-Za-z_][A-Za-z0-9_]*)\\s*(?=(<|\\())",
+          "beginCaptures": {
+            "1": { "name": "keyword.modifier.atlas77" },
+            "2": { "name": "entity.name.function.atlas77" }
+          },
+          "end": "\\)\\s*(->\\s*([A-Za-z0-9_<>,\\[\\]&\\s:;]+))?\\s*;",
+          "endCaptures": {
+            "2": { "name": "storage.type.atlas77" },
+            "3": { "name": "storage.type.atlas77" }
+          },
+          "patterns": [
+            { "include": "#types" },
+            { "include": "#generics" },
+            { "include": "#arrays" }
+          ]
+        },
         {
           "name": "entity.name.function.declaration.atlas77",
           "match": "\\b(fun)\\s+([A-Za-z_][A-Za-z0-9_]*)\\s*(<[^>]+>)?\\s*\\(([^)]*)\\)\\s*(->\\s*([A-Za-z0-9_<>,\\[\\]:;\\s]+))?",

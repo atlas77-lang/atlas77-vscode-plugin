@@ -29,6 +29,14 @@
       "settings": { "foreground": "#C586C0" }
     },
     {
+      "scope": "keyword.modifier.atlas77",
+      "settings": { "foreground": "#CE9178" }
+    },
+    {
+      "scope": "keyword.control.extern.atlas77",
+      "settings": { "foreground": "#D7BA7D" }
+    },
+    {
       "scope": "string.quoted.import.atlas77",
       "settings": { "foreground": "#9CDCFE" }
     },
