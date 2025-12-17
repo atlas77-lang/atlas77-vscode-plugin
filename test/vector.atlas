@@ -1,65 +1,80 @@
-package std::vector;
+package std;
 
-import std::io;
+import "std/io";
+import "std/iter";
 
 public extern len<T>(data: [T]) -> uint64;
+public extern slice<T>(data: [T], start: uint64, end: uint64) -> [T];
 
 public struct Vector<T> {
-    private:
-        data: [T];
-    public:
-        length: uint64;
-        capacity: uint64;
+private:
+    data: [T];
+public:
+    length: uint64;
+    capacity: uint64;
 
     Vector(data: [T]) {
         this.length = len(data);
         this.capacity = this.length;
         this.data = data;
     }
-    ~Vector() {
-        this.data = 0;
-        this.length = 0;
-        delete this.data;
-    }
+    ~Vector() {}
 
     /// A function that doesn't have a "self" parameter is a static function
     /// static functions are called like this: "Vector::<T>::function_name()"
-    fun with_capacity(capacity: uint64) -> Vector<T> {
-        return new Vector<T>(new [T; capacity]);
+    fun with_capacity(capacity: uint64) -> Vector<T> { //Still unstable feature
+        let vec = new Vector<T>(new [T; capacity]);
+        vec.length = 0u;
+        return vec;
+    }
+
+    fun get(this, index: uint64) -> T {
+        if index >= this.length {
+            panic("Index out of bounds");
+        }
+        return this.data[index];
+    }
+
+    fun set(this, index: uint64, val: T) {
+        if index >= this.length {
+            panic("Index out of bounds");
+        }
+        this.data[index] = val;
     }
 
     /// A function that has a "self" parameter is a method of the struct
     /// and is called like this: "vector_instance.function_name()"
     fun push(this, val: T) {
-        if this.capacity <= this.length {
-            let new_capacity = this.capacity * 2;
-
+        if this.length >= this.capacity {
+            // Resize
+            let new_capacity: uint64 = 0u;
+            if this.capacity == 0u {
+                new_capacity = 1u;
+            } else {
+                new_capacity = this.capacity * 2u;
+            }
             let new_data = new [T; new_capacity];
-            let i = 0;
+            let i: uint64 = 0u;
             while i < this.length {
                 new_data[i] = this.data[i];
-                i = i + 1;
+                i = i + 1u;
             }
-            let data_to_delete = this.data;
             this.data = new_data;
             this.capacity = new_capacity;
-
-            delete data_to_delete;
         }
         this.data[this.length] = val;
-        this.length = this.length + 1;
+        this.length = this.length + 1u;
     }
     
     fun pop(this) -> T {
-        if this.length == 0 {
+        if this.length == 0u {
             panic("Cannot pop from an empty vector");
         }
-        this.length = this.length - 1;
+        this.length = this.length - 1u;
         return this.data[this.length];
     }
-}
 
-fun main() {
-    let my_vec = new Vector<int64>([0, 1, 2, 3, 4]);
-    my_vec.push(5);
+    fun into_iter(this) -> Iter<T> {
+        return new Iter<T>(this);
+    }
 }

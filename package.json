@@ -7,7 +7,7 @@
     "url": "https://github.com/atlas77-lang/atlas77-vscode-plugin"
   },
   "icon": "images/atlas77_file_logo.png",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "publisher": "Gipson62",
   "author": "Gipson62",
   "engines": {
@@ -30,7 +30,6 @@
         "extensions": [
           ".atlas"
         ],
-        
         "icon": {
           "light": "images/atlas77_file_logo.png",
           "dark": "images/atlas77_file_logo.png"
@@ -44,8 +43,7 @@
         "scopeName": "source.atlas77",
         "path": "./syntaxes/atlas77.tmLanguage.json"
       }
-    ]
-    ,
+    ],
     "themes": [
       {
         "label": "Atlas77 Theme",
@@ -53,5 +51,8 @@
         "path": "./themes/atlas77-color-theme.json"
       }
     ]
+  },
+  "dependencies": {
+    "vsce": "^2.15.0"
   }
 }

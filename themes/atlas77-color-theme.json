@@ -1,48 +1,122 @@
 {
   "name": "Atlas77 Theme",
   "type": "dark",
-  "colors": {},
+  "colors": {
+    "editor.background": "#1e1e1e",
+    "editor.foreground": "#d4d4d4",
+    "editorLineNumber.foreground": "#858585",
+    "editorLineNumber.activeForeground": "#c6c6c6",
+    "editor.selectionBackground": "#264f78",
+    "editor.selectionHighlightBackground": "#add6ff26"
+  },
   "tokenColors": [
     {
-      "scope": "storage.type.atlas77",
-      "settings": { "foreground": "#FF8C00" }
+      "name": "Comments",
+      "scope": ["comment.line.documentation.atlas77", "comment.line.double-slash.atlas77", "comment.block.atlas77"],
+      "settings": { "foreground": "#6A9955", "fontStyle": "italic" }
     },
     {
-      "scope": "storage.type.nullable.atlas77",
-      "settings": { "foreground": "#FF8C00" }
-    },
-    {
-      "scope": "support.class.atlas77",
-      "settings": { "foreground": "#8AB4F8" }
-    },
-    {
-      "scope": "support.type.generic.nullable.atlas77",
-      "settings": { "foreground": "#8AB4F8" }
-    }
-    ,
-    {
-      "scope": "keyword.control.import.atlas77",
-      "settings": { "foreground": "#D7BA7D" }
-    },
-    {
-      "scope": "keyword.control.package.atlas77",
-      "settings": { "foreground": "#C586C0" }
-    },
-    {
-      "scope": "keyword.modifier.atlas77",
+      "name": "Strings",
+      "scope": ["string.quoted.double.atlas77", "string.quoted.single.atlas77"],
       "settings": { "foreground": "#CE9178" }
     },
     {
-      "scope": "keyword.control.extern.atlas77",
+      "name": "String escapes",
+      "scope": "constant.character.escape.atlas77",
       "settings": { "foreground": "#D7BA7D" }
     },
     {
-      "scope": "string.quoted.import.atlas77",
+      "name": "Numbers",
+      "scope": "constant.numeric.atlas77",
+      "settings": { "foreground": "#B5CEA8" }
+    },
+    {
+      "name": "Keywords - Control (if, while, return, etc.)",
+      "scope": "keyword.control.atlas77",
+      "settings": { "foreground": "#C586C0", "fontStyle": "" }
+    },
+    {
+      "name": "Keywords - Modifiers (public, private, let, const)",
+      "scope": "keyword.modifier.atlas77",
+      "settings": { "foreground": "#569CD6" }
+    },
+    {
+      "name": "Keywords - Storage (this, null)",
+      "scope": "keyword.storage.atlas77",
+      "settings": { "foreground": "#569CD6" }
+    },
+    {
+      "name": "Access section markers (public:, private:)",
+      "scope": "keyword.modifier.section.atlas77",
+      "settings": { "foreground": "#569CD6" }
+    },
+    {
+      "name": "Primitive types (int64, string, bool, etc.)",
+      "scope": "storage.type.atlas77",
+      "settings": { "foreground": "#4EC9B0" }
+    },
+    {
+      "name": "Reference operator (&)",
+      "scope": "storage.type.reference.atlas77",
+      "settings": { "foreground": "#4EC9B0" }
+    },
+    {
+      "name": "User-defined types (MyStruct, expected, Result, Vector)",
+      "scope": "support.type.atlas77",
+      "settings": { "foreground": "#4FC1FF" }
+    },
+    {
+      "name": "Struct/Enum/Union names (declarations)",
+      "scope": ["entity.name.struct.atlas77", "entity.name.enum.atlas77", "entity.name.union.atlas77"],
+      "settings": { "foreground": "#4FC1FF", "fontStyle": "bold" }
+    },
+    {
+      "name": "Enum variants",
+      "scope": "constant.enum.atlas77",
+      "settings": { "foreground": "#D4A5FF" }
+    },
+    {
+      "name": "Function names (declarations and calls)",
+      "scope": ["entity.name.function.atlas77", "support.function.call.atlas77"],
+      "settings": { "foreground": "#DCDCAA" }
+    },
+    {
+      "name": "Function parameters",
+      "scope": "variable.parameter.atlas77",
       "settings": { "foreground": "#9CDCFE" }
     },
     {
-      "scope": "punctuation.separator.namespace.atlas77",
-      "settings": { "foreground": "#FFFFFF" }
+      "name": "Variables",
+      "scope": ["variable.other.atlas77", "variable.other.member.atlas77"],
+      "settings": { "foreground": "#9CDCFE" }
+    },
+    {
+      "name": "Fields (this.field)",
+      "scope": "variable.field.atlas77",
+      "settings": { "foreground": "#C8C8F0" }
+    },
+    {
+      "name": "Namespace paths and separators",
+      "scope": ["entity.name.namespace.atlas77", "punctuation.separator.atlas77"],
+      "settings": { "foreground": "#D4D4D4" }
+    },
+    {      "name": "Trait names in constraints",
+      "scope": "entity.name.trait.atlas77",
+      "settings": { "foreground": "#B8D7A3" }
+    },
+    {
+      "name": "Generic type parameters",
+      "scope": "support.type.generic.param.atlas77",
+      "settings": { "foreground": "#B8D7A3" }
+    },
+    {      "name": "Annotations (#[...])",
+      "scope": "entity.name.annotation.atlas77",
+      "settings": { "foreground": "#C586C0", "fontStyle": "italic" }
+    },
+    {
+      "name": "Boolean constants",
+      "scope": "constant.language.atlas77",
+      "settings": { "foreground": "#569CD6" }
     }
   ]
 }
