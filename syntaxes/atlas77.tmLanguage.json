@@ -1,354 +1,276 @@
 {
+  "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
   "name": "Atlas77",
   "scopeName": "source.atlas77",
-  "fileTypes": ["atlas"],
+  "fileTypes": [
+    "atlas"
+  ],
   "patterns": [
-    { "include": "#doccomments" },
-    { "include": "#comments" },
-    { "include": "#strings" },
-    { "include": "#numbers" },
-    { "include": "#constants" },
-    { "include": "#package" },
-    { "include": "#imports" },
-    { "include": "#keywords" },
-    { "include": "#annotations" },
-    { "include": "#enums" },
-    { "include": "#unions" },
-    { "include": "#structs" },
-    { "include": "#functions" },
-    { "include": "#externFunctions" },
-    { "include": "#destructors" },
-    { "include": "#paths" },
-    { "include": "#primitivetypes" },
-    { "include": "#types" },
-    { "include": "#fields" }
+    {
+      "include": "#attributes"
+    },
+    {
+      "include": "#doc-comments"
+    },
+    {
+      "include": "#comments"
+    },
+    {
+      "include": "#imports"
+    },
+    {
+      "include": "#extern-abi"
+    },
+    {
+      "include": "#function-definitions"
+    },
+    {
+      "include": "#struct-definitions"
+    },
+    {
+      "include": "#enum-definitions"
+    },
+    {
+      "include": "#union-definitions"
+    },
+    {
+      "include": "#destructors"
+    },
+    {
+      "include": "#storage-modifiers"
+    },
+    {
+      "include": "#control-keywords"
+    },
+    {
+      "include": "#builtin-functions"
+    },
+    {
+      "include": "#primitive-types"
+    },
+    {
+      "include": "#self-keyword"
+    },
+    {
+      "include": "#language-constants"
+    },
+    {
+      "include": "#string-literals"
+    },
+    {
+      "include": "#char-literals"
+    },
+    {
+      "include": "#numeric-literals"
+    },
+    {
+      "include": "#type-cast"
+    },
+    {
+      "include": "#namespace-separator"
+    },
+    {
+      "include": "#arrow"
+    },
+    {
+      "include": "#operators"
+    }
   ],
   "repository": {
-    "doccomments": {
-      "name": "comment.line.documentation.atlas77",
-      "match": "^\\s*///.*$"
+    "attributes": {
+      "match": "#\\[([^\\]]+)\\]",
+      "captures": {
+        "0": {
+          "name": "meta.attribute.atlas77"
+        },
+        "1": {
+          "name": "entity.name.tag.attribute.atlas77"
+        }
+      }
+    },
+    "doc-comments": {
+      "match": "//!.*$",
+      "name": "comment.line.documentation.atlas77"
     },
     "comments": {
-      "patterns": [
-        { "name": "comment.line.double-slash.atlas77", "match": "//.*$" },
-        { "name": "comment.block.atlas77", "begin": "/\\*", "end": "\\*/" }
-      ]
-    },
-    "strings": {
-      "patterns": [
-        {
-          "name": "string.quoted.double.atlas77",
-          "begin": "\"",
-          "end": "\"",
-          "patterns": [
-            { "name": "constant.character.escape.atlas77", "match": "\\\\." }
-          ]
-        },
-        {
-          "name": "string.quoted.single.atlas77",
-          "begin": "'",
-          "end": "'",
-          "patterns": [
-            { "name": "constant.character.escape.atlas77", "match": "\\\\." }
-          ]
-        }
-      ]
-    },
-    "numbers": {
-      "name": "constant.numeric.atlas77",
-      "match": "\\b\\d+(?:\\.\\d+)?(?:_(?:u|i|f)\\d+|_u64|_i64|_f64)?\\b"
-    },
-    "primitivetypes": {
-      "name": "storage.type.atlas77",
-      "match": "\\b(int64|int32|int16|int8|uint64|uint32|uint16|uint8|float64|float32|bool|string|unit|char|extern_ptr|usize|isize)\\b"
-    },
-    "genericContent": {
-      "patterns": [
-        {
-          "name": "meta.generic.constraint.namespaced.atlas77",
-          "match": "\\b([A-Za-z_][A-Za-z0-9_]*)\\s*:\\s*([A-Za-z_][A-Za-z0-9_]*)::([A-Za-z_][A-Za-z0-9_]*)",
-          "captures": {
-            "1": { "name": "support.type.generic.param.atlas77" },
-            "2": { "name": "entity.name.namespace.atlas77" },
-            "3": { "name": "entity.name.trait.atlas77" }
-          }
-        },
-        {
-          "name": "meta.generic.constraint.atlas77",
-          "match": "\\b([A-Za-z_][A-Za-z0-9_]*)\\s*:\\s*([A-Za-z_][A-Za-z0-9_]*)",
-          "captures": {
-            "1": { "name": "support.type.generic.param.atlas77" },
-            "2": { "name": "entity.name.trait.atlas77" }
-          }
-        },
-        {
-          "name": "meta.type.generic.nested.atlas77",
-          "begin": "\\b([A-Z][A-Za-z0-9_]*)\\s*(<)",
-          "beginCaptures": {
-            "1": { "name": "support.type.atlas77" },
-            "2": { "name": "punctuation.definition.generic.begin.atlas77" }
-          },
-          "end": "(>)",
-          "endCaptures": {
-            "1": { "name": "punctuation.definition.generic.end.atlas77" }
-          },
-          "patterns": [
-            { "include": "#genericContent" }
-          ]
-        },
-        {
-          "name": "support.type.generic.param.atlas77",
-          "match": "\\b[A-Z]\\b"
-        },
-        { "include": "#primitivetypes" },
-        {
-          "name": "support.type.atlas77",
-          "match": "\\b[A-Z][A-Za-z0-9_]*\\b"
-        },
-        { "name": "punctuation.separator.atlas77", "match": "," },
-        { "name": "storage.type.reference.atlas77", "match": "&" }
-      ]
-    },
-    "keywords": {
-      "patterns": [
-        { "name": "keyword.control.atlas77", "match": "\\b(if|else|while|for|return|break|continue|match|as|where|new|delete|extern|import|package|fun|struct|enum|union|concept|operator)\\b" },
-        { "name": "keyword.modifier.atlas77", "match": "\\b(public|private|let|const)\\b" },
-        { "name": "keyword.storage.atlas77", "match": "\\b(this|null)\\b" },
-        { "name": "keyword.modifier.section.atlas77", "match": "^\\s*(public|private)\\s*:\\s*$" }
-      ]
-    },
-    "annotations": {
-      "name": "meta.annotation.atlas77",
-      "begin": "#\\[",
-      "end": "\\]",
-      "patterns": [
-        { "name": "entity.name.annotation.atlas77", "match": "[a-zA-Z_][a-zA-Z0-9_]*" }
-      ]
-    },
-    "package": {
-      "name": "meta.package.atlas77",
-      "begin": "\\b(package)\\b",
-      "beginCaptures": { "1": { "name": "keyword.control.atlas77" } },
-      "end": ";",
-      "patterns": [
-        { "name": "entity.name.namespace.atlas77", "match": "[A-Za-z_][A-Za-z0-9_]*" },
-        { "name": "punctuation.separator.atlas77", "match": "::" }
-      ]
+      "match": "//.*$",
+      "name": "comment.line.double-slash.atlas77"
     },
     "imports": {
-      "name": "meta.import.atlas77",
-      "begin": "\\b(import)\\b",
-      "beginCaptures": { "1": { "name": "keyword.control.atlas77" } },
-      "end": ";",
-      "patterns": [
-        { "name": "string.quoted.double.atlas77", "begin": "\"", "end": "\"" },
-        { "name": "entity.name.namespace.atlas77", "match": "[A-Za-z_][A-Za-z0-9_]*" },
-        { "name": "punctuation.separator.atlas77", "match": "::|/" }
-      ]
-    },
-    "types": {
-      "patterns": [
-        {
-          "name": "meta.type.generic.atlas77",
-          "begin": "\\b([A-Z][A-Za-z0-9_]*)\\s*(<)",
-          "beginCaptures": {
-            "1": { "name": "support.type.atlas77" },
-            "2": { "name": "punctuation.definition.generic.begin.atlas77" }
-          },
-          "end": "(>)",
-          "endCaptures": {
-            "1": { "name": "punctuation.definition.generic.end.atlas77" }
-          },
-          "patterns": [
-            { "include": "#genericContent" }
-          ]
+      "match": "\\b(import)\\s+(\"[^\"]+\")",
+      "captures": {
+        "1": {
+          "name": "keyword.control.import.atlas77"
         },
-        {
-          "name": "storage.type.reference.atlas77",
-          "match": "&\\s*(?:const\\s+)?"
+        "2": {
+          "name": "string.quoted.double.import-path.atlas77"
+        }
+      }
+    },
+    "extern-abi": {
+      "comment": "Matches extern \"C\" ABI strings to prevent them being highlighted as regular strings",
+      "match": "\\b(extern)\\s+(\"[A-Za-z]+\")",
+      "captures": {
+        "1": {
+          "name": "storage.modifier.atlas77"
         },
-        {
-          "name": "support.type.atlas77",
-          "match": "\\b[A-Z][A-Za-z0-9_]*\\b"
+        "2": {
+          "name": "string.quoted.double.abi.atlas77"
         }
-      ]
+      }
     },
-    "structs": {
-      "name": "meta.struct.atlas77",
-      "begin": "\\b(?:(public|private)\\s+)?struct\\s+([A-Za-z_][A-Za-z0-9_]*)",
-      "beginCaptures": {
-        "1": { "name": "keyword.modifier.atlas77" },
-        "2": { "name": "entity.name.struct.atlas77" }
-      },
-      "end": "(?=\\})",
-      "patterns": [
-        { "include": "#comments" },
-        { "include": "#annotations" },
-        { "include": "#keywords" },
-        {
-          "name": "variable.other.member.atlas77",
-          "match": "([a-zA-Z_][a-zA-Z0-9_]*)\\s*:"
-        }
-      ]
-    },
-    "enums": {
-      "name": "meta.enum.atlas77",
-      "begin": "\\b(?:(public|private)\\s+)?enum\\s+([A-Za-z_][A-Za-z0-9_]*)",
-      "beginCaptures": {
-        "1": { "name": "keyword.modifier.atlas77" },
-        "2": { "name": "entity.name.enum.atlas77" }
-      },
-      "end": "(?=\\})",
-      "patterns": [
-        { "include": "#comments" },
-        { "name": "constant.enum.atlas77", "match": "\\b[A-Za-z_][A-Za-z0-9_]*\\b" }
-      ]
-    },
-    "unions": {
-      "name": "meta.union.atlas77",
-      "begin": "\\b(?:(public|private)\\s+)?union\\s+([A-Za-z_][A-Za-z0-9_]*)",
-      "beginCaptures": {
-        "1": { "name": "keyword.modifier.atlas77" },
-        "2": { "name": "entity.name.union.atlas77" }
-      },
-      "end": "(?=\\})",
-      "patterns": [
-        { "include": "#comments" },
-        { "include": "#keywords" },
-        { "name": "variable.other.member.atlas77", "match": "([a-zA-Z_][a-zA-Z0-9_]*)\\s*:" }
-      ]
-    },
-    "functions": {
-      "patterns": [
-        {
-          "name": "meta.function.atlas77",
-          "begin": "\\b(?:(public|private)\\s+)?fun\\s+([A-Za-z_][A-Za-z0-9_]*)\\s*(?=<|\\()",
-          "beginCaptures": {
-            "1": { "name": "keyword.modifier.atlas77" },
-            "2": { "name": "entity.name.function.atlas77" }
-          },
-          "end": "(?=\\{)",
-          "patterns": [
-            {
-              "name": "meta.function.generic.atlas77",
-              "begin": "<",
-              "end": ">",
-              "patterns": [{ "include": "#genericContent" }]
-            },
-            { "name": "variable.parameter.atlas77", "match": "([a-zA-Z_][a-zA-Z0-9_]*)(?=\\s*:)" },
-            { "name": "keyword.operator.arrow.atlas77", "match": "->" },
-            { "include": "#primitivetypes" },
-            { "include": "#types" },
-            { "name": "storage.type.reference.atlas77", "match": "&" },
-            { "name": "punctuation.separator.atlas77", "match": "[,:]" }
-          ]
-        }
-      ]
-    },
-    "externFunctions": {
-      "patterns": [
-        {
-          "name": "meta.extern.atlas77",
-          "begin": "\\b(?:(public|private)\\s+)?extern\\s+([A-Za-z_][A-Za-z0-9_]*)\\s*(?=<|\\()",
-          "beginCaptures": {
-            "1": { "name": "keyword.modifier.atlas77" },
-            "2": { "name": "entity.name.function.atlas77" }
-          },
-          "end": "(?=;)",
-          "patterns": [
-            {
-              "name": "meta.extern.generic.atlas77",
-              "begin": "<",
-              "end": ">",
-              "patterns": [{ "include": "#genericContent" }]
-            },
-            { "name": "variable.parameter.atlas77", "match": "([a-zA-Z_][a-zA-Z0-9_]*)(?=\\s*:)" },
-            { "name": "keyword.operator.arrow.atlas77", "match": "->" },
-            { "include": "#primitivetypes" },
-            { "include": "#types" },
-            { "name": "storage.type.reference.atlas77", "match": "&" },
-            { "name": "punctuation.separator.atlas77", "match": "[,:]" }
-          ]
-        }
-      ]
-    },
-    "paths": {
-      "patterns": [
-        {
-          "name": "meta.path.atlas77",
-          "match": "\\b([A-Za-z_][A-Za-z0-9_]*)\\s*(?=<[^>]+>::)",
-          "captures": {
-            "1": { "name": "support.type.atlas77" }
-          }
+    "function-definitions": {
+      "match": "\\b(fun)\\s+([a-zA-Z_][a-zA-Z0-9_]*)",
+      "captures": {
+        "1": {
+          "name": "keyword.other.fun.atlas77"
         },
-        {
-          "name": "meta.path.atlas77",
-          "match": "::([A-Za-z_][A-Za-z0-9_]*)\\s*(?=\\()",
-          "captures": {
-            "1": { "name": "entity.name.function.atlas77" }
-          }
-        },
-        {
-          "name": "meta.path.atlas77",
-          "match": "\\b([A-Za-z_][A-Za-z0-9_]*)::([A-Za-z_][A-Za-z0-9_]*)",
-          "captures": {
-            "1": { "name": "support.type.atlas77" },
-            "2": { "name": "entity.name.function.atlas77" }
-          }
-        },
-        {
-          "name": "meta.new.atlas77",
-          "match": "\\b(new)\\s+([A-Za-z_][A-Za-z0-9_]*)",
-          "captures": {
-            "1": { "name": "keyword.control.atlas77" },
-            "2": { "name": "support.type.atlas77" }
-          }
+        "2": {
+          "name": "entity.name.function.atlas77"
         }
-      ]
+      }
+    },
+    "struct-definitions": {
+      "match": "\\b(struct)\\s+([a-zA-Z_][a-zA-Z0-9_]*)",
+      "captures": {
+        "1": {
+          "name": "keyword.other.struct.atlas77"
+        },
+        "2": {
+          "name": "entity.name.type.struct.atlas77"
+        }
+      }
+    },
+    "enum-definitions": {
+      "match": "\\b(enum)\\s+([a-zA-Z_][a-zA-Z0-9_]*)",
+      "captures": {
+        "1": {
+          "name": "keyword.other.enum.atlas77"
+        },
+        "2": {
+          "name": "entity.name.type.enum.atlas77"
+        }
+      }
+    },
+    "union-definitions": {
+      "match": "\\b(union)\\s+([a-zA-Z_][a-zA-Z0-9_]*)",
+      "captures": {
+        "1": {
+          "name": "keyword.other.union.atlas77"
+        },
+        "2": {
+          "name": "entity.name.type.union.atlas77"
+        }
+      }
     },
     "destructors": {
-      "name": "meta.destructor.atlas77",
-      "match": "~\\s*([A-Za-z_][A-Za-z0-9_]*)\\s*\\(",
-      "captures": { "1": { "name": "entity.name.function.atlas77" } }
+      "comment": "Destructor syntax: ~TypeName()",
+      "match": "~([a-zA-Z_][a-zA-Z0-9_]*)(?=\\s*\\()",
+      "captures": {
+        "0": {
+          "name": "entity.name.function.destructor.atlas77"
+        }
+      }
     },
-    "fields": {
+    "storage-modifiers": {
+      "match": "\\b(public|private|extern|const)\\b",
+      "name": "storage.modifier.atlas77"
+    },
+    "control-keywords": {
+      "match": "\\b(if|else|while|for|return|let|delete|break|continue)\\b",
+      "name": "keyword.control.atlas77"
+    },
+    "builtin-functions": {
+      "comment": "Compiler intrinsics and standard primitives",
+      "match": "\\b(move|copy|sizeof|size_of|alignof|align_of|panic|assert|printf|println|print|input|malloc|free|memcpy)\\b",
+      "name": "support.function.builtin.atlas77"
+    },
+    "primitive-types": {
+      "match": "\\b(uint8|uint16|uint32|uint64|int8|int16|int32|int64|float32|float64|bool|string|unit|usize|isize|FILE)\\b",
+      "name": "support.type.primitive.atlas77"
+    },
+    "self-keyword": {
+      "match": "\\bthis\\b",
+      "name": "variable.language.self.atlas77"
+    },
+    "language-constants": {
+      "match": "\\b(true|false|null)\\b",
+      "name": "constant.language.atlas77"
+    },
+    "string-literals": {
+      "name": "string.quoted.double.atlas77",
+      "begin": "\"",
+      "end": "\"",
       "patterns": [
         {
-          "name": "variable.field.atlas77",
-          "match": "this\\.([a-zA-Z_][a-zA-Z0-9_]*)"
+          "match": "\\\\(?:[nrt\\\\\"'0abfv]|x[0-9A-Fa-f]{2}|u\\{[0-9A-Fa-f]+\\})",
+          "name": "constant.character.escape.atlas77"
         },
         {
-          "name": "meta.method.call.atlas77",
-          "match": "\\b([a-zA-Z_][a-zA-Z0-9_]*)\\s*\\.\\s*([a-zA-Z_][a-zA-Z0-9_]*)\\s*(?=\\()",
-          "captures": {
-            "1": { "name": "variable.other.atlas77" },
-            "2": { "name": "entity.name.function.atlas77" }
-          }
-        },
-        {
-          "name": "meta.field.access.atlas77",
-          "match": "\\b([a-zA-Z_][a-zA-Z0-9_]*)\\s*\\.\\s*([a-zA-Z_][a-zA-Z0-9_]*)",
-          "captures": {
-            "1": { "name": "variable.other.atlas77" },
-            "2": { "name": "variable.field.atlas77" }
-          }
-        },
-        {
-          "name": "meta.function.call.atlas77",
-          "match": "\\b([a-zA-Z_][a-zA-Z0-9_]*)\\s*(?=\\()",
-          "captures": {
-            "1": { "name": "entity.name.function.atlas77" }
-          }
-        },
-        {
-          "name": "variable.other.atlas77",
-          "match": "\\b([a-zA-Z_][a-zA-Z0-9_]*)\\b"
+          "match": "\\\\.",
+          "name": "invalid.illegal.escape.atlas77"
         }
       ]
     },
-    "constants": {
-      "name": "constant.language.atlas77",
-      "match": "\\b(true|false)\\b"
+    "char-literals": {
+      "match": "'(?:[^'\\\\]|\\\\[nrt\\\\\"'0abfv])'",
+      "name": "string.quoted.single.atlas77"
+    },
+    "numeric-literals": {
+      "patterns": [
+        {
+          "comment": "Hexadecimal integer literal",
+          "match": "\\b0x[0-9A-Fa-f][0-9A-Fa-f_]*(?:u8|u16|u32|u64|i8|i16|i32|i64|u|i)?\\b",
+          "name": "constant.numeric.hex.atlas77"
+        },
+        {
+          "comment": "Floating-point literal",
+          "match": "\\b[0-9][0-9_]*\\.[0-9][0-9_]*(?:f32|f64)?\\b",
+          "name": "constant.numeric.float.atlas77"
+        },
+        {
+          "comment": "Integer literal with optional type suffix",
+          "match": "\\b[0-9][0-9_]*(?:u8|u16|u32|u64|i8|i16|i32|i64|u|i)?\\b",
+          "name": "constant.numeric.integer.atlas77"
+        }
+      ]
+    },
+    "type-cast": {
+      "match": "\\b(as)\\b",
+      "name": "keyword.operator.cast.atlas77"
+    },
+    "namespace-separator": {
+      "match": "::",
+      "name": "punctuation.separator.namespace.atlas77"
+    },
+    "arrow": {
+      "comment": "Used for both return type annotation and pointer member access",
+      "match": "->",
+      "name": "keyword.operator.arrow.atlas77"
+    },
+    "operators": {
+      "patterns": [
+        {
+          "comment": "Compound assignment operators",
+          "match": "(?:\\+=|-=|\\*=|/=|%=|&&=|\\|\\|=|&=|\\|=|\\^=|<<=|>>=)",
+          "name": "keyword.operator.assignment.compound.atlas77"
+        },
+        {
+          "comment": "Comparison and logical operators",
+          "match": "(?:==|!=|<=|>=|&&|\\|\\|)",
+          "name": "keyword.operator.logical.atlas77"
+        },
+        {
+          "comment": "Assignment",
+          "match": "(?<![=!<>])=(?!=)",
+          "name": "keyword.operator.assignment.atlas77"
+        },
+        {
+          "comment": "Arithmetic, bitwise, pointer, reference operators",
+          "match": "[+\\-*/%&|^!~<>]",
+          "name": "keyword.operator.atlas77"
+        }
+      ]
     }
   }
 }
