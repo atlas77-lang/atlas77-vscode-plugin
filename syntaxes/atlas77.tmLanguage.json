@@ -186,7 +186,7 @@
       "name": "support.function.builtin.atlas77"
     },
     "primitive-types": {
-      "match": "\\b(uint8|uint16|uint32|uint64|int8|int16|int32|int64|float32|float64|bool|string|unit|usize|isize|FILE)\\b",
+      "match": "\\b(uint8|uint16|uint32|uint64|int8|int16|int32|int64|float32|float64|bool|string|unit|usize|isize)\\b",
       "name": "support.type.primitive.atlas77"
     },
     "self-keyword": {
