@@ -1,8 +1,15 @@
 {
-  "name": "atlas77-vscode-ext",
-  "displayName": "atlas77-vscode-ext",
+  "name": "atlas77",
+  "displayName": "atlas77",
   "description": "Syntax highlighting for the Atlas77 programming language",
-  "version": "0.0.1",
+    "repository": {
+    "type": "git",
+    "url": "https://github.com/atlas77-lang/atlas77-vscode-plugin"
+  },
+  "icon": "images/atlas77_file_logo.png",
+  "version": "0.4.0",
+  "publisher": "Gipson62",
+  "author": "Gipson62",
   "engines": {
     "vscode": "^1.116.0"
   },
@@ -12,7 +19,17 @@
   "contributes": {
     "languages": [{
       "id": "atlas",
-      "aliases": ["Atlas77", "atlas"],
+      "aliases": [
+        "Atlas77",
+        "atlas77",
+        "atlas",
+        "atlas_77",
+        "atlas-77"
+      ],
+      "icon": {
+        "light": "images/atlas77_file_logo.png",
+        "dark": "images/atlas77_file_logo.png"
+      },
       "extensions": [".atlas"],
       "configuration": "./language-configuration.json"
     }],
