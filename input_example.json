@@ -1,0 +1,569 @@
+{
+  "hir": {
+    "body": {
+      "functions": {
+        "main": {
+          "span": {
+            "start": 25,
+            "end": 163,
+            "path": "C:\\Users\\JHGip\\Documents\\Project\\atlas77\\.\\examples\\ref.atlas"
+          },
+          "name": "main",
+          "name_span": {
+            "start": 25,
+            "end": 29,
+            "path": "C:\\Users\\JHGip\\Documents\\Project\\atlas77\\.\\examples\\ref.atlas"
+          },
+          "signature": {
+            "span": {
+              "start": 25,
+              "end": 163,
+              "path": "C:\\Users\\JHGip\\Documents\\Project\\atlas77\\.\\examples\\ref.atlas"
+            },
+            "vis": "Private",
+            "params": [],
+            "generics": [],
+            "type_params": [],
+            "return_ty": {
+              "Unit": {}
+            },
+            "return_ty_span": {
+              "start": 25,
+              "end": 31,
+              "path": "C:\\Users\\JHGip\\Documents\\Project\\atlas77\\.\\examples\\ref.atlas"
+            },
+            "is_external": false,
+            "is_intrinsic": false,
+            "pre_mangled_ty": null,
+            "docstring": null,
+            "is_instantiated": true,
+            "c_name": null
+          },
+          "body": {
+            "span": {
+              "start": 39,
+              "end": 163,
+              "path": "C:\\Users\\JHGip\\Documents\\Project\\atlas77\\.\\examples\\ref.atlas"
+            },
+            "statements": [
+              {
+                "Let": {
+                  "span": {
+                    "start": 39,
+                    "end": 54,
+                    "path": "C:\\Users\\JHGip\\Documents\\Project\\atlas77\\.\\examples\\ref.atlas"
+                  },
+                  "name": "i",
+                  "name_span": {
+                    "start": 43,
+                    "end": 44,
+                    "path": "C:\\Users\\JHGip\\Documents\\Project\\atlas77\\.\\examples\\ref.atlas"
+                  },
+                  "ty": {
+                    "LiteralInteger": {
+                      "value": 125894,
+                      "span": {
+                        "start": 47,
+                        "end": 53,
+                        "path": "C:\\Users\\JHGip\\Documents\\Project\\atlas77\\.\\examples\\ref.atlas"
+                      }
+                    }
+                  },
+                  "ty_span": null,
+                  "value": {
+                    "Unary": {
+                      "span": {
+                        "start": 47,
+                        "end": 54,
+                        "path": "C:\\Users\\JHGip\\Documents\\Project\\atlas77\\.\\examples\\ref.atlas"
+                      },
+                      "op": null,
+                      "expr": {
+                        "IntegerLiteral": {
+                          "value": 125894,
+                          "span": {
+                            "start": 47,
+                            "end": 53,
+                            "path": "C:\\Users\\JHGip\\Documents\\Project\\atlas77\\.\\examples\\ref.atlas"
+                          },
+                          "ty": {
+                            "LiteralInteger": {
+                              "value": 125894,
+                              "span": {
+                                "start": 47,
+                                "end": 53,
+                                "path": "C:\\Users\\JHGip\\Documents\\Project\\atlas77\\.\\examples\\ref.atlas"
+                              }
+                            }
+                          }
+                        }
+                      },
+                      "ty": {
+                        "LiteralInteger": {
+                          "value": 125894,
+                          "span": {
+                            "start": 47,
+                            "end": 53,
+                            "path": "C:\\Users\\JHGip\\Documents\\Project\\atlas77\\.\\examples\\ref.atlas"
+                          }
+                        }
+                      },
+                      "is_overloaded": false
+                    }
+                  }
+                }
+              },
+              {
+                "Let": {
+                  "span": {
+                    "start": 60,
+                    "end": 75,
+                    "path": "C:\\Users\\JHGip\\Documents\\Project\\atlas77\\.\\examples\\ref.atlas"
+                  },
+                  "name": "ref_i",
+                  "name_span": {
+                    "start": 64,
+                    "end": 69,
+                    "path": "C:\\Users\\JHGip\\Documents\\Project\\atlas77\\.\\examples\\ref.atlas"
+                  },
+                  "ty": {
+                    "PtrTy": {
+                      "inner": {
+                        "LiteralInteger": {
+                          "value": 125894,
+                          "span": {
+                            "start": 47,
+                            "end": 53,
+                            "path": "C:\\Users\\JHGip\\Documents\\Project\\atlas77\\.\\examples\\ref.atlas"
+                          }
+                        }
+                      },
+                      "is_const": false,
+                      "span": {
+                        "start": 72,
+                        "end": 75,
+                        "path": "C:\\Users\\JHGip\\Documents\\Project\\atlas77\\.\\examples\\ref.atlas"
+                      }
+                    }
+                  },
+                  "ty_span": null,
+                  "value": {
+                    "Unary": {
+                      "span": {
+                        "start": 72,
+                        "end": 75,
+                        "path": "C:\\Users\\JHGip\\Documents\\Project\\atlas77\\.\\examples\\ref.atlas"
+                      },
+                      "op": "AsRef",
+                      "expr": {
+                        "Ident": {
+                          "name": "i",
+                          "span": {
+                            "start": 73,
+                            "end": 74,
+                            "path": "C:\\Users\\JHGip\\Documents\\Project\\atlas77\\.\\examples\\ref.atlas"
+                          },
+                          "ty": {
+                            "LiteralInteger": {
+                              "value": 125894,
+                              "span": {
+                                "start": 47,
+                                "end": 53,
+                                "path": "C:\\Users\\JHGip\\Documents\\Project\\atlas77\\.\\examples\\ref.atlas"
+                              }
+                            }
+                          }
+                        }
+                      },
+                      "ty": {
+                        "PtrTy": {
+                          "inner": {
+                            "LiteralInteger": {
+                              "value": 125894,
+                              "span": {
+                                "start": 47,
+                                "end": 53,
+                                "path": "C:\\Users\\JHGip\\Documents\\Project\\atlas77\\.\\examples\\ref.atlas"
+                              }
+                            }
+                          },
+                          "is_const": false,
+                          "span": {
+                            "start": 72,
+                            "end": 75,
+                            "path": "C:\\Users\\JHGip\\Documents\\Project\\atlas77\\.\\examples\\ref.atlas"
+                          }
+                        }
+                      },
+                      "is_overloaded": false
+                    }
+                  }
+                }
+              },
+              {
+                "Let": {
+                  "span": {
+                    "start": 83,
+                    "end": 100,
+                    "path": "C:\\Users\\JHGip\\Documents\\Project\\atlas77\\.\\examples\\ref.atlas"
+                  },
+                  "name": "foo",
+                  "name_span": {
+                    "start": 87,
+                    "end": 90,
+                    "path": "C:\\Users\\JHGip\\Documents\\Project\\atlas77\\.\\examples\\ref.atlas"
+                  },
+                  "ty": {
+                    "Named": {
+                      "name": "Foo",
+                      "span": {
+                        "start": 93,
+                        "end": 96,
+                        "path": "C:\\Users\\JHGip\\Documents\\Project\\atlas77\\.\\examples\\ref.atlas"
+                      }
+                    }
+                  },
+                  "ty_span": null,
+                  "value": {
+                    "Unary": {
+                      "span": {
+                        "start": 93,
+                        "end": 100,
+                        "path": "C:\\Users\\JHGip\\Documents\\Project\\atlas77\\.\\examples\\ref.atlas"
+                      },
+                      "op": null,
+                      "expr": {
+                        "ObjLiteral": {
+                          "span": {
+                            "start": 97,
+                            "end": 99,
+                            "path": "C:\\Users\\JHGip\\Documents\\Project\\atlas77\\.\\examples\\ref.atlas"
+                          },
+                          "ty": {
+                            "Named": {
+                              "name": "Foo",
+                              "span": {
+                                "start": 93,
+                                "end": 96,
+                                "path": "C:\\Users\\JHGip\\Documents\\Project\\atlas77\\.\\examples\\ref.atlas"
+                              }
+                            }
+                          },
+                          "fields": []
+                        }
+                      },
+                      "ty": {
+                        "Named": {
+                          "name": "Foo",
+                          "span": {
+                            "start": 93,
+                            "end": 96,
+                            "path": "C:\\Users\\JHGip\\Documents\\Project\\atlas77\\.\\examples\\ref.atlas"
+                          }
+                        }
+                      },
+                      "is_overloaded": false
+                    }
+                  }
+                }
+              },
+              {
+                "Let": {
+                  "span": {
+                    "start": 106,
+                    "end": 130,
+                    "path": "C:\\Users\\JHGip\\Documents\\Project\\atlas77\\.\\examples\\ref.atlas"
+                  },
+                  "name": "ref_foo",
+                  "name_span": {
+                    "start": 110,
+                    "end": 117,
+                    "path": "C:\\Users\\JHGip\\Documents\\Project\\atlas77\\.\\examples\\ref.atlas"
+                  },
+                  "ty": {
+                    "Named": {
+                      "name": "Foo",
+                      "span": {
+                        "start": 119,
+                        "end": 124,
+                        "path": "C:\\Users\\JHGip\\Documents\\Project\\atlas77\\.\\examples\\ref.atlas"
+                      }
+                    }
+                  },
+                  "ty_span": {
+                    "start": 119,
+                    "end": 124,
+                    "path": "C:\\Users\\JHGip\\Documents\\Project\\atlas77\\.\\examples\\ref.atlas"
+                  },
+                  "value": {
+                    "Unary": {
+                      "span": {
+                        "start": 125,
+                        "end": 130,
+                        "path": "C:\\Users\\JHGip\\Documents\\Project\\atlas77\\.\\examples\\ref.atlas"
+                      },
+                      "op": "AsRef",
+                      "expr": {
+                        "Ident": {
+                          "name": "foo",
+                          "span": {
+                            "start": 126,
+                            "end": 129,
+                            "path": "C:\\Users\\JHGip\\Documents\\Project\\atlas77\\.\\examples\\ref.atlas"
+                          },
+                          "ty": {
+                            "Named": {
+                              "name": "Foo",
+                              "span": {
+                                "start": 93,
+                                "end": 96,
+                                "path": "C:\\Users\\JHGip\\Documents\\Project\\atlas77\\.\\examples\\ref.atlas"
+                              }
+                            }
+                          }
+                        }
+                      },
+                      "ty": {
+                        "PtrTy": {
+                          "inner": {
+                            "Named": {
+                              "name": "Foo",
+                              "span": {
+                                "start": 93,
+                                "end": 96,
+                                "path": "C:\\Users\\JHGip\\Documents\\Project\\atlas77\\.\\examples\\ref.atlas"
+                              }
+                            }
+                          },
+                          "is_const": false,
+                          "span": {
+                            "start": 125,
+                            "end": 130,
+                            "path": "C:\\Users\\JHGip\\Documents\\Project\\atlas77\\.\\examples\\ref.atlas"
+                          }
+                        }
+                      },
+                      "is_overloaded": false
+                    }
+                  }
+                }
+              },
+              {
+                "Let": {
+                  "span": {
+                    "start": 142,
+                    "end": 163,
+                    "path": "C:\\Users\\JHGip\\Documents\\Project\\atlas77\\.\\examples\\ref.atlas"
+                  },
+                  "name": "a",
+                  "name_span": {
+                    "start": 146,
+                    "end": 147,
+                    "path": "C:\\Users\\JHGip\\Documents\\Project\\atlas77\\.\\examples\\ref.atlas"
+                  },
+                  "ty": {
+                    "UnsignedInteger": {
+                      "size_in_bits": 64
+                    }
+                  },
+                  "ty_span": {
+                    "start": 149,
+                    "end": 157,
+                    "path": "C:\\Users\\JHGip\\Documents\\Project\\atlas77\\.\\examples\\ref.atlas"
+                  },
+                  "value": {
+                    "Unary": {
+                      "span": {
+                        "start": 158,
+                        "end": 163,
+                        "path": "C:\\Users\\JHGip\\Documents\\Project\\atlas77\\.\\examples\\ref.atlas"
+                      },
+                      "op": null,
+                      "expr": {
+                        "FloatLiteral": {
+                          "value": 42.0,
+                          "span": {
+                            "start": 158,
+                            "end": 162,
+                            "path": "C:\\Users\\JHGip\\Documents\\Project\\atlas77\\.\\examples\\ref.atlas"
+                          },
+                          "ty": {
+                            "LiteralFloat": {
+                              "value": 4631107791820423168,
+                              "span": {
+                                "start": 158,
+                                "end": 162,
+                                "path": "C:\\Users\\JHGip\\Documents\\Project\\atlas77\\.\\examples\\ref.atlas"
+                              }
+                            }
+                          }
+                        }
+                      },
+                      "ty": {
+                        "LiteralFloat": {
+                          "value": 4631107791820423168,
+                          "span": {
+                            "start": 158,
+                            "end": 162,
+                            "path": "C:\\Users\\JHGip\\Documents\\Project\\atlas77\\.\\examples\\ref.atlas"
+                          }
+                        }
+                      },
+                      "is_overloaded": false
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          "pre_mangled_ty": null
+        }
+      },
+      "structs": {
+        "Foo": {
+          "span": {
+            "start": 7,
+            "end": 24,
+            "path": "C:\\Users\\JHGip\\Documents\\Project\\atlas77\\.\\examples\\ref.atlas"
+          },
+          "name": "Foo",
+          "pre_mangled_ty": null,
+          "name_span": {
+            "start": 7,
+            "end": 10,
+            "path": "C:\\Users\\JHGip\\Documents\\Project\\atlas77\\.\\examples\\ref.atlas"
+          },
+          "signature": {
+            "declaration_span": {
+              "start": 7,
+              "end": 24,
+              "path": "C:\\Users\\JHGip\\Documents\\Project\\atlas77\\.\\examples\\ref.atlas"
+            },
+            "vis": "Private",
+            "flag": "None",
+            "name": "Foo",
+            "pre_mangled_ty": null,
+            "name_span": {
+              "start": 7,
+              "end": 10,
+              "path": "C:\\Users\\JHGip\\Documents\\Project\\atlas77\\.\\examples\\ref.atlas"
+            },
+            "methods": {},
+            "fields": {},
+            "generics": [],
+            "operators": {},
+            "constants": {},
+            "destructor": null,
+            "had_user_defined_destructor": false,
+            "is_std_copyable": true,
+            "is_std_default": false,
+            "is_std_hashable": false,
+            "is_trivially_copyable": true,
+            "nullable_attribute_span": null,
+            "is_instantiated": true,
+            "docstring": null,
+            "is_extern": false,
+            "c_name": null
+          },
+          "methods": [],
+          "operators": [],
+          "fields": [],
+          "destructor": null,
+          "vis": "Private",
+          "flag": "None"
+        }
+      },
+      "imports": [],
+      "enums": {},
+      "unions": {}
+    },
+    "signature": {
+      "functions": {
+        "main": {
+          "span": {
+            "start": 25,
+            "end": 163,
+            "path": "C:\\Users\\JHGip\\Documents\\Project\\atlas77\\.\\examples\\ref.atlas"
+          },
+          "vis": "Private",
+          "params": [],
+          "generics": [],
+          "type_params": [],
+          "return_ty": {
+            "Unit": {}
+          },
+          "return_ty_span": {
+            "start": 25,
+            "end": 31,
+            "path": "C:\\Users\\JHGip\\Documents\\Project\\atlas77\\.\\examples\\ref.atlas"
+          },
+          "is_external": false,
+          "is_intrinsic": false,
+          "pre_mangled_ty": null,
+          "docstring": null,
+          "is_instantiated": true,
+          "c_name": null
+        }
+      },
+      "structs": {
+        "Foo": {
+          "declaration_span": {
+            "start": 7,
+            "end": 24,
+            "path": "C:\\Users\\JHGip\\Documents\\Project\\atlas77\\.\\examples\\ref.atlas"
+          },
+          "vis": "Private",
+          "flag": "None",
+          "name": "Foo",
+          "pre_mangled_ty": null,
+          "name_span": {
+            "start": 7,
+            "end": 10,
+            "path": "C:\\Users\\JHGip\\Documents\\Project\\atlas77\\.\\examples\\ref.atlas"
+          },
+          "methods": {},
+          "fields": {},
+          "generics": [],
+          "operators": {},
+          "constants": {},
+          "destructor": null,
+          "had_user_defined_destructor": false,
+          "is_std_copyable": true,
+          "is_std_default": false,
+          "is_std_hashable": false,
+          "is_trivially_copyable": true,
+          "nullable_attribute_span": null,
+          "is_instantiated": true,
+          "docstring": null,
+          "is_extern": false,
+          "c_name": null
+        }
+      },
+      "enums": {},
+      "unions": {},
+      "docstring": null,
+      "module_name": "",
+      "imported_modules": {}
+    }
+  },
+  "errors": [
+    {
+      "message": "type mismatch error, found `*Foo` but expected `Foo`",
+      "span": {
+        "start": 119,
+        "end": 124,
+        "path": "C:\\Users\\JHGip\\Documents\\Project\\atlas77\\.\\examples\\ref.atlas"
+      },
+      "kind": "error"
+    },
+    {
+      "message": "type mismatch error, found `float32 /* 42 */` but expected `uint64`",
+      "span": {
+        "start": 149,
+        "end": 157,
+        "path": "C:\\Users\\JHGip\\Documents\\Project\\atlas77\\.\\examples\\ref.atlas"
+      },
+      "kind": "error"
+    }
+  ]
+}
