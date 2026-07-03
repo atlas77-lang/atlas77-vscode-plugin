@@ -37,7 +37,9 @@ exports.activate = activate;
 exports.deactivate = deactivate;
 const path = __importStar(require("path"));
 const node_1 = require("vscode-languageclient/node");
+const vscode_1 = require("vscode");
 let client;
+let outputChannel = vscode_1.window.createOutputChannel('Atlas77');
 function activate(context) {
     // The server is implemented in node
     const serverModule = context.asAbsolutePath(path.join('server', 'out', 'server.js'));
@@ -58,8 +60,10 @@ function activate(context) {
         }
     };
     client = new node_1.LanguageClient('atlas77Server', 'Atlas77 Language Server', serverOptions, clientOptions);
-    console.log('Starting Atlas77 Language Client...');
+    outputChannel.appendLine('Starting Atlas77 Language Client...');
+    context.subscriptions.push(outputChannel);
     client.start();
+    outputChannel.appendLine('Atlas77 Language Client started.');
 }
 function deactivate() {
     if (!client) {

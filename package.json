@@ -17,6 +17,9 @@
     "Programming Languages"
   ],
   "main": "./client/out/extension.js",
+  "activationEvents": [
+    "onStartupFinished"
+  ],
   "contributes": {
     "languages": [
       {

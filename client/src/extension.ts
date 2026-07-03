@@ -6,8 +6,10 @@ import {
     ServerOptions,
     TransportKind
 } from 'vscode-languageclient/node';
+import { window } from 'vscode';
 
 let client: LanguageClient;
+let outputChannel = window.createOutputChannel('Atlas77');
 
 export function activate(context: ExtensionContext) {
     // The server is implemented in node
@@ -33,8 +35,11 @@ export function activate(context: ExtensionContext) {
 
     client = new LanguageClient('atlas77Server', 'Atlas77 Language Server', serverOptions, clientOptions);
     
-    console.log('Starting Atlas77 Language Client...');
+    outputChannel.appendLine('Starting Atlas77 Language Client...');
+    context.subscriptions.push(outputChannel);
+
     client.start();
+    outputChannel.appendLine('Atlas77 Language Client started.');
 }
 
 export function deactivate(): Thenable<void> | undefined {
