@@ -1,13 +1,10 @@
-struct Foo {
+import "std/io";
+import "std/optional";
+import "std/expected";
 
-}
-
+//! Entry point of the program
 fun main() {
-    let i = 125894;
-    let ref_i = &i;
-
-    let foo = Foo {};
-    let ref_foo: Foo = &foo;
-    
-    let a: uint64 = 42.0;
+    std::print("Hello, Atlas!");
+    let opt = std::optional<int64>::of(23); 
+    let exp = std::expected<int64, int64>::expect(23);
 }
